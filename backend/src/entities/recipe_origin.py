@@ -3,8 +3,8 @@ from sqlalchemy import Column, String
 from .entity import Entity, Base
 
 
-class MealTimeCategory(Entity, Base):
-    __tablename__ = 'meal_time_categories'
+class RecipeOrigin(Entity, Base):
+    __tablename__ = 'recipe_origins'
 
     name = Column(String, unique=True, nullable=False)
 
