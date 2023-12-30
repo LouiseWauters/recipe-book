@@ -44,7 +44,6 @@ def get_recipes():
 
 @app.route("/food-items")
 def get_food_items():
-    mock_data()
     return jsonify(get_items(FoodItem, FoodItemSchema)), 200
 
 

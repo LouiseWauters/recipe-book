@@ -12,6 +12,7 @@ class FoodItem(Entity, Base):
     is_full_meal = Column(Boolean, nullable=False)
     spoils = Column(Boolean, nullable=False)
     computed_nutrition = Column(Boolean, nullable=False)  # Indicates nutrition to be computed from recipe ingredients
+    snooze_days = Column(Integer, nullable=False, default=14)
     price = Column(Double)
     price_amount = Column(Double)
     nutrition_amount = Column(Double)
@@ -40,7 +41,7 @@ class FoodItem(Entity, Base):
                                               primaryjoin='FoodItem.minimum_pantry_amount_unit_id==Unit.id')
     recipe = relationship('Recipe', back_populates='food_item', uselist=False)
 
-    def __init__(self, name, is_full_meal, spoils, computed_nutrition, price=None, price_amount=None,
+    def __init__(self, name, is_full_meal, spoils, computed_nutrition, snooze_days=14, price=None, price_amount=None,
                  nutrition_amount=None, kcal=None, carbs=None, protein=None, fat=None, fibre=None,
                  dark_leafy_greens_serving_amount=None, other_vegetables_serving_amount=None, fruit_serving_amount=None,
                  grains_starches_serving_amount=None, nuts_seeds_serving_amount=None, legumes_serving_amount=None,
@@ -51,6 +52,7 @@ class FoodItem(Entity, Base):
         self.is_full_meal = is_full_meal
         self.spoils = spoils
         self.computed_nutrition = computed_nutrition
+        self.snooze_days = snooze_days
         self.price = price
         self.price_amount = price_amount
         self.nutrition_amount = nutrition_amount
@@ -79,6 +81,7 @@ class FoodItemSchema(Schema):
     is_full_meal = fields.Boolean()
     spoils = fields.Boolean()
     computed_nutrition = fields.Boolean()
+    snooze_days = fields.Integer(required=False)
     price = fields.Number(required=False)
     price_amount = fields.Number(required=False)
     nutrition_amount = fields.Number(required=False)
