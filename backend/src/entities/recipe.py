@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from .entity import Entity, Base
@@ -21,6 +21,8 @@ class Recipe(Entity, Base):
     food_item = relationship('FoodItem', back_populates='recipe')
     recipe_status = relationship('RecipeStatus')
     cook_or_origin = relationship('RecipeOrigin')
+
+    __table_args__ = (UniqueConstraint("food_item_id"),)
 
     def __init__(self, food_item_id, recipe_status_id, cook_or_origin_id, original_source_link=None, cook_time=None,
                  prep_time=None, rest_time=None, description=None):
