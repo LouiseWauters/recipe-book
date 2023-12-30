@@ -8,6 +8,7 @@ from .entities.recipe import Recipe, RecipeSchema
 from .entities.recipe_origin import RecipeOrigin, RecipeOriginSchema
 from .entities.recipe_status import RecipeStatus, RecipeStatusSchema
 from .entities.unit import Unit, UnitSchema
+from .entities.unit_conversion import UnitConversion, UnitConversionSchema
 from .utils.crud_utils import get_items
 from .utils.mock_data import mock_data
 
@@ -50,3 +51,9 @@ def get_food_items():
 @app.route("/meals")
 def get_meals():
     return jsonify(get_items(Meal, MealSchema)), 200
+
+
+@app.route("/mock-data")
+def insert_mock_data():
+    mock_data()
+    return jsonify({}), 200

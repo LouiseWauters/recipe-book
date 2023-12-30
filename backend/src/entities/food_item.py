@@ -40,6 +40,7 @@ class FoodItem(Entity, Base):
     minimum_pantry_amount_unit = relationship('Unit',
                                               primaryjoin='FoodItem.minimum_pantry_amount_unit_id==Unit.id')
     recipe = relationship('Recipe', back_populates='food_item', uselist=False)
+    unit_conversions = relationship('UnitConversion', back_populates='food_item')
 
     def __init__(self, name, is_full_meal, spoils, computed_nutrition, snooze_days=14, price=None, price_amount=None,
                  nutrition_amount=None, kcal=None, carbs=None, protein=None, fat=None, fibre=None,
@@ -106,4 +107,5 @@ class FoodItemSchema(Schema):
     price_unit_id = fields.Integer(load_only=True, required=False)
     nutrition_unit_id = fields.Integer(load_only=True, required=False)
     minimum_pantry_amount_unit_id = fields.Integer(load_only=True, required=False)
+    unit_conversions = fields.Nested('UnitConversionSchema', many=True, exclude=('food_item',))
 
