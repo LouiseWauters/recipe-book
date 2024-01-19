@@ -64,6 +64,35 @@ def mock_data():
         "minimum_pantry_amount": 0,
         "minimum_pantry_amount_unit_id": 1
     }
+    # quark
+    new_food_item4 = {
+        "name": "magere kwark",
+        "is_full_meal": False,
+        "spoils": True,
+        "computed_nutrition": False,
+        "snooze_days": 14,
+        "price": 1.39,
+        "price_amount": 500,
+        "nutrition_amount": 100,
+        "kcal": 52,
+        "carbs": 4,
+        "protein": 9,
+        "fat": 0,
+        "fibre": 0,
+        "dark_leafy_greens_serving_amount": -1,
+        "other_vegetables_serving_amount": -1,
+        "fruit_serving_amount": -1,
+        "grains_starches_serving_amount": -1,
+        "nuts_seeds_serving_amount": -1,
+        "legumes_serving_amount": -1,
+        "dairy_serving_amount": 200,
+        "season": 4095,
+        "minimum_pantry_amount": 0,
+        "price_unit_id": 1,
+        "nutrition_unit_id": 1,
+        "minimum_pantry_amount_unit_id": 1
+    }
+    # cruesli
     item1 = add_item(new_food_item1, FoodItem, FoodItemSchema)
     item2 = add_item(new_food_item2, FoodItem, FoodItemSchema)
     item3 = add_item(new_food_item3, FoodItem, FoodItemSchema)

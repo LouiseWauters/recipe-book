@@ -1,0 +1,25 @@
+<div class="chip-large chip-accent" (mouseenter)="showOverlay = true" (mouseleave)="showOverlay = false">
+    <div class="image-container">
+        <img src={{foodItem.pic_path}} alt="{{foodItem.name}}">
+        <div class="overlay" *ngIf="showOverlay">
+            <div style="padding: 0px 10px;"><b>{{foodItem.name}}</b></div>
+        </div>
+    </div>
+    <div class="icon-column">
+        <div class="icon-circle">
+            <i class="fi fi-rr-cross-small"></i>
+        </div>
+        <div class="icon-circle">
+            <i class="fi fi-rr-heart"></i>
+        </div>
+        <div class="icon-circle">
+            <i class="fi fi-rr-clock-five"></i>
+        </div>
+        <div class="icon-circle">
+            <i class="fi fi-rr-duplicate"></i>
+        </div>
+        <div [ngClass]="{'icon-circle': true, 'green-circle': foodItem.plan}" (click)="foodItem.plan = !foodItem.plan">
+            <i class="fi fi-rr-check"></i>
+        </div>
+    </div>
+</div>
